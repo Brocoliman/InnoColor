@@ -41,6 +41,7 @@ cd InnoColor
 2. Create conda environment
 ```bash
 conda create -n innocolor python=3.11
+conda activate innocolor
 ```
 
 3. Install Pytorch and torchvision
@@ -71,7 +72,6 @@ pip install -r requirements.txt
 
 ## Run 
 ```bash
-conda activate innocolor
 python main.py
 ```
 
