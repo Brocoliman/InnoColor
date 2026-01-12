@@ -2,6 +2,7 @@
 
 InnoColor deployment for Ubuntu. PyTorch and TKinter.
 
+```
 innocolor/
 │── main.py
 │── settings.py: app and device (Linux and XBox) specifications
@@ -18,6 +19,7 @@ innocolor/
 |
 │── requirements.txt
 │── README.md
+```
 
 ## Installation
 
