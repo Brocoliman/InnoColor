@@ -31,7 +31,13 @@ git clone https://github.com/Brocoliman/InnoColor.git
 cd InnoColor
 ```
 
-2. Install requirements
+2. (Recommended) Create Conda environment
+This project was developed and tested using Conda on Linux (Ubuntu).
+```bash
+conda create -n innocolor python=3.11
+conda activate innocolor
+```
+3. Install requirements
 ```bash
 pip install -r requirements.txt
 ```
