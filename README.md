@@ -25,12 +25,21 @@ innocolor/
 
 ## Installation
 
+1. Install requirements
 ```bash
 pip install -r requirements.txt
 ```
+2. Download models (move these into their respective folders in `checkpoint/`) from [Google Drive](https://drive.google.com/drive/u/0/folders/1mCRWx0PGKODix-e9XUzvoWWF8T7DReiZ)
+- `Dalt-NET` requires `classifier_190.pth` and `LUTs_190.pth`
+- `InnoColor` requires `classifier_2000.pth`, `generator_200.pth`, `LUTs_2000.pth`, and `SAM2UNet-SOD.pth`
+- `distill` requires `generator_100.pth`
+
+3. Download sample datasets and move them into root folder
+- `ds1.pth`
+- `ds2.pth`
+- `ds3.pth`
 
 ## Run
-
 1. Change `FOLDER` in `settings.py` to the name of this project location
 2. Run 
 ```bash
