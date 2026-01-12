@@ -1,6 +1,7 @@
 # InnoColor
 
 InnoColor deployment for Ubuntu. PyTorch and TKinter.
+If you want the stable production version, please move to the `release/windows` branch.
 
 ```
 innocolor/
