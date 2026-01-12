@@ -4,6 +4,7 @@ from PIL import Image, ImageTk
 from torch.utils.data import DataLoader
 from torchvision.transforms.functional import to_pil_image
 from utils.checkdim import checkdim
+from settings import *
 
 class Carousel(tk.Frame):
     def __init__(self, parent, ds):
@@ -14,7 +15,7 @@ class Carousel(tk.Frame):
         self.dl = DataLoader(self.ds, batch_size=1, shuffle=False)
 
         # Canvas to hold images with a scrollbar
-        self.canvas = tk.Canvas(self, height=225, bg="white", highlightthickness=0)
+        self.canvas = tk.Canvas(self, height=225//SCALE, bg="white", highlightthickness=0)
         self.scrollbar = tk.Scrollbar(self, orient="horizontal", command=self.canvas.xview)
         self.canvas.configure(xscrollcommand=self.scrollbar.set)
 
@@ -48,7 +49,7 @@ class Carousel(tk.Frame):
         for i, (x, y, m_info) in enumerate(self.dl):
             checkdim(x, 'BCHW')
             img = to_pil_image(x.squeeze(0))
-            img = img.resize((180, 135))
+            img = img.resize((180//(SCALE*2), 135//(SCALE*2)))
             img_tk = ImageTk.PhotoImage(img)
 
             self.image_objects.append(img_tk)
@@ -56,9 +57,9 @@ class Carousel(tk.Frame):
             lbl = tk.Label(
                 self.frame, image=img_tk, bg="white",
                 borderwidth=2, relief="solid",
-                highlightthickness=0, padx=5, pady=5
+                highlightthickness=0, padx=5//SCALE, pady=5//SCALE
             )
-            lbl.pack(side="left", padx=10, pady=20)
+            lbl.pack(side="left", padx=10//SCALE, pady=20//SCALE)
             self.image_labels.append(lbl)
 
         # Update immediately after loading
@@ -75,7 +76,7 @@ class Carousel(tk.Frame):
         canvas_width = self.canvas.winfo_width()
 
         # Update scrollregion to match the frame's full size
-        self.canvas.configure(scrollregion=(0, 0, frame_width, 225))
+        self.canvas.configure(scrollregion=(0, 0, frame_width, 225//SCALE))
 
 
     def set_active_image(self, index):

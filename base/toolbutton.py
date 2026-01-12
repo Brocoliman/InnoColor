@@ -18,7 +18,7 @@ class ToolButton(tk.Button):
 
         # Load and resize the image
         image = Image.open(icon_path)
-        image = image.resize((kwargs['width'], kwargs['height']))  # Resize image dynamically
+        image = image.resize((kwargs['width']//SCALE, kwargs['height']//SCALE))  # Resize image dynamically
         self.icon = ImageTk.PhotoImage(image)
         self.args = args
         self.menu_open = False  # Tracks menu state

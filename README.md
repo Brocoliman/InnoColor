@@ -1,6 +1,10 @@
 # InnoColor
 
-InnoColor deployment for Ubuntu. PyTorch and TKinter.
+InnoColor deployment for Windows. PyTorch and TKinter.
+
+This version is stable and production-ready, unlike the Linux version. After cloning and before running, several parameters need to be changed to adapt the app to your device.
+
+The Windows deployment also supports the RGB ambient sensor, which the Linux deployment does not.
 
 ```
 innocolor/
@@ -19,6 +23,9 @@ innocolor/
 |── sam2/
 |── sam2_configs/
 |
+|── rgb_sensor_display.py
+|── rgb_sensor_print.ino.ino
+|
 │── requirements.txt
 │── README.md
 ```
@@ -31,30 +38,40 @@ git clone https://github.com/Brocoliman/InnoColor.git
 cd InnoColor
 ```
 
-2. (Recommended) Create Conda environment
-This project was developed and tested using Conda on Linux (Ubuntu).
+2. Create conda environment
 ```bash
 conda create -n innocolor python=3.11
-conda activate innocolor
 ```
-3. Install requirements
+
+3. Install Pytorch and torchvision
+Please follow instructions for your system at the official site:
+[PyTorch Get Started](https://pytorch.org/get-started/locally/)
+
+4. After installing PyTorch, install the rest of the dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-3. Download models (move these into their respective folders in `checkpoint/`) from [Google Drive](https://drive.google.com/drive/u/0/folders/1mCRWx0PGKODix-e9XUzvoWWF8T7DReiZ)
+
+5. Download models (move these into their respective folders in `checkpoint/`) from [Google Drive](https://drive.google.com/drive/u/0/folders/1mCRWx0PGKODix-e9XUzvoWWF8T7DReiZ)
 - `Dalt-NET` requires `classifier_190.pth` and `LUTs_190.pth`
 - `InnoColor` requires `classifier_2000.pth`, `generator_200.pth`, `LUTs_2000.pth`, and `SAM2UNet-SOD.pth`
 - `distill` requires `generator_100.pth`
 
-4. Download sample datasets and move them into root folder
+6. Download sample datasets and move them into root folder
 - `ds1.pth`
 - `ds2.pth`
 - `ds3.pth`
 
-5. Change `FOLDER` in `settings.py` to the name of this project location
+7. Change `FOLDER` in `settings.py` to the name of this project location
+
+8. The GUI was designed for a 3840 x 2160 display. 
+- Adjust `WIDTH` and `HEIGHT` to desired window size of the application
+- `ASPECT` refers to the aspect ratio of the images that InnoColor will capture, work with, and display (not changing is recommended)
+- Based on `WIDTH` and `HEIGHT` adjustments, adjust `BOXHEIGHT` which determines size of image display in the data editing interface. Ensure that `2 * ASPECT * BOXHEIGHT < WIDTH` or else the displays won't fit on the application
 
 ## Run 
 ```bash
+conda activate innocolor
 python main.py
 ```
 

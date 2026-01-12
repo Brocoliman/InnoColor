@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import Image, ImageTk
+from settings import *
 import os
 
 class IconButton(tk.Button):
@@ -20,7 +21,7 @@ class IconButton(tk.Button):
                 new_image.paste(image, (0, 0), image)  # Paste with transparency
 
                 # Resize the image while maintaining aspect ratio
-                new_image = new_image.resize((kwargs['width'], kwargs['height']), Image.Resampling.LANCZOS)
+                new_image = new_image.resize((kwargs['width']//SCALE, kwargs['height']//SCALE), Image.Resampling.LANCZOS)
 
                 # Convert to a format Tkinter understands
                 self.icon = ImageTk.PhotoImage(new_image)

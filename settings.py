@@ -1,16 +1,17 @@
-FOLDER = r"/home/brocolimanx/Desktop/appdemo 2/appdemo"
+FOLDER = r"C:\Users\wangd\Documents\InnoColor"
 
-WIDTH = 2796
-HEIGHT = 1290
+WIDTH = 1800
+HEIGHT = 900
 ASPECT = 16/9
 FPS = 22
 MAX_FRAME_TIME = 0.03
 EYE_DISPLACEMENT = 0.1
-BOXHEIGHT = 720
+BOXHEIGHT = 480
 XBOX_LISTEN_DELAY = 0.1
 MENU_CURR_HOVER = "#b0b0b0"
 MENU_HOVER = "#d0d0d0"
 MENU_DEFAULT = "white"
+SCALE = 2
 
 XBOX_A = 0
 XBOX_B = 1

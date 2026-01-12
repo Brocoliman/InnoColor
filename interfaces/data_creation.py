@@ -24,38 +24,38 @@ class DataCreationInterface(Interface):
         ######################################################################################################################
 
         # Create Top Bar Frame
-        self.top_bar = tk.Frame(self, bg="white", height=50)
-        self.top_bar.pack(fill="x", padx=10, pady=10)
+        self.top_bar = tk.Frame(self, bg="white", height=50//SCALE)
+        self.top_bar.pack(fill="x", padx=10//SCALE, pady=10//SCALE)
 
         # Back Button (iPhone-style left arrow)
-        self.back_button = IconButton(self.top_bar, icon_path="icons/icon_back.png", bg="white", width=50, height=66)
-        self.back_button.pack(side="left", padx=5)
+        self.back_button = IconButton(self.top_bar, icon_path="icons/icon_back.png", bg="white", width=50//SCALE, height=66//SCALE)
+        self.back_button.pack(side="left", padx=5//SCALE)
 
         # Bind Click Event
         self.back_button.bind("<Button-1>", lambda event: self.go_to_data_management())
         self.back_button.invoke = self.go_to_data_management
 
         # Back Text (Next to Arrow)
-        self.back_label = Label(self.top_bar, text="Back to My Datasets", font=("Arial", 14), bg="white", fg="black")
-        self.back_label.pack(side="left", padx=5)
+        self.back_label = Label(self.top_bar, text="Back to My Datasets", font=("Arial", 14//SCALE), bg="white", fg="black")
+        self.back_label.pack(side="left", padx=5//SCALE)
         self.back_label.bind("<Button-1>", lambda event: self.go_to_data_management())  # Make text clickable
 
         # Header Label (Dynamic Dataset Name)
-        self.header_label = Label(self, text=self.get_header_text(), font=("Arial", 26, "bold"), bg="white", fg="black")
+        self.header_label = Label(self, text=self.get_header_text(), font=("Arial", 26//SCALE, "bold"), bg="white", fg="black")
         self.header_label.pack(fill="x")
 
         ######################################################################################################################
         ##### ROW 1: CONTROL BUTTONS & SLIDERS #####
 
         self.row1_container = Frame(self, bg="white")
-        self.row1_container.pack(fill="x", padx=20, pady=10)
+        self.row1_container.pack(fill="x", padx=20//SCALE, pady=10//SCALE)
 
         # Use grid for even spacing
         self.row1_container.columnconfigure((0, 1, 2, 3), weight=1)  # Ensures even column distribution
 
         # Column 1: Model Button (Fixed Collision Box)
         self.button_container1 = Frame(self.row1_container, bg="white")
-        self.button_container1.grid(row=0, column=0, padx=20, pady=5, sticky="nsew")
+        self.button_container1.grid(row=0, column=0, padx=20//SCALE, pady=5//SCALE, sticky="nsew")
         self.button_container1.pack_propagate(False)  # Prevents frame from resizing beyond the button
 
         self.mbutton = ModelButton(self.button_container1, self, save_func=self.save_result, refresh_func=self.refresh_image, bg="white")
@@ -63,50 +63,50 @@ class DataCreationInterface(Interface):
 
         # Column 2: Sliders (SimSlider on top, ModelSlider below) - Centered Vertically
         self.slider_container = Frame(self.row1_container, bg="white")
-        self.slider_container.grid(row=0, column=1, rowspan=2, padx=20, pady=5, sticky="nsew")
+        self.slider_container.grid(row=0, column=1, rowspan=2, padx=20//SCALE, pady=5//SCALE, sticky="nsew")
         self.slider_container.pack_propagate(False)
 
         # Spacer Above Sliders (Centers them vertically)
-        self.spacer_top = Frame(self.slider_container, height=20, bg="white")
+        self.spacer_top = Frame(self.slider_container, height=40, bg="white")
         self.spacer_top.pack()
 
-        self.sim_slider = SimSlider(self.slider_container, width=500)
-        self.sim_slider.pack(fill="x", padx=10, pady=5)
+        self.sim_slider = SimSlider(self.slider_container, width=500//SCALE)
+        self.sim_slider.pack(fill="x", padx=10//SCALE, pady=5//SCALE)
 
         # **NEW: Spacer Between Sliders**
-        self.spacer_middle = Frame(self.slider_container, height=15, bg="white")  # Adjust height as needed
+        self.spacer_middle = Frame(self.slider_container, height=15//SCALE, bg="white")  # Adjust height as needed
         self.spacer_middle.pack()
 
-        self.model_slider = ModelSlider(self.slider_container, width=500)
-        self.model_slider.pack(fill="x", padx=10, pady=5)
+        self.model_slider = ModelSlider(self.slider_container, width=500//SCALE)
+        self.model_slider.pack(fill="x", padx=10//SCALE, pady=5//SCALE)
 
         # Spacer Below Sliders (Centers them vertically)
-        self.spacer_bottom = Frame(self.slider_container, height=20, bg="white")
+        self.spacer_bottom = Frame(self.slider_container, height=20//SCALE, bg="white")
         self.spacer_bottom.pack()
 
         # Column 3: Sim Button & Highlight Button (Side-by-Side)
         self.button_container2 = Frame(self.row1_container, bg="white")
-        self.button_container2.grid(row=0, column=2, padx=20, pady=5, sticky="nsew")
+        self.button_container2.grid(row=0, column=2, padx=20//SCALE, pady=5//SCALE, sticky="nsew")
 
         self.button_inner_container2 = Frame(self.button_container2, bg="white")
         self.button_inner_container2.pack()
 
         # Highlight Button (Right)
         self.hbutton = HighlightButton(self.button_inner_container2, self, refresh_func=self.refresh_image, bg="white")
-        self.hbutton.pack(side="right", padx=5, pady=5)
+        self.hbutton.pack(side="right", padx=5//SCALE, pady=5//SCALE)
 
         # Sim Button (Left)
         self.sbutton = SimButton(self.button_inner_container2, self, refresh_func=self.refresh_image, bg="white")
-        self.sbutton.pack(side="right", padx=5, pady=5)
+        self.sbutton.pack(side="right", padx=5//SCALE, pady=5//SCALE)
         self.sbutton.add_slider(self.sim_slider)
 
         # Column 4: Trash Can Button (Fix Clickbox)
         self.button_container3 = Frame(self.row1_container, bg="white")
-        self.button_container3.grid(row=0, column=3, padx=20, pady=5, sticky="nsew")
+        self.button_container3.grid(row=0, column=3, padx=20//SCALE, pady=5//SCALE, sticky="nsew")
 
         # Spacer
-        self.spacer_right = Frame(self.button_container3, width=150, bg="white")
-        self.spacer_right.pack(side="right", padx=5)
+        self.spacer_right = Frame(self.button_container3, width=150//SCALE, bg="white")
+        self.spacer_right.pack(side="right", padx=5//SCALE)
         self.trash_button = IconButton(self.button_container3, command=self.delete_current_image, icon_path="icons/icon_trash.png", bg="white", width=120, height=120)
         self.trash_button.pack(side="right")
 
@@ -115,7 +115,7 @@ class DataCreationInterface(Interface):
         self.save_button.pack(side="right")
 
         # Bind to process
-        self.funcdisplay = Process(self.mbutton, self.sbutton, self.hbutton)
+        self.funcdisplay = Process(self.mbutton, self.sbutton, self.hbutton, optimize=False)
         self.funcsave = Process(self.mbutton, self.sbutton, self.hbutton, modelonly=True, topil=False)
 
         ######################################################################################################################
@@ -125,26 +125,26 @@ class DataCreationInterface(Interface):
         self.box_height = BOXHEIGHT
 
         self.row2_container = Frame(self, bg="white", height=self.box_height)  # Set a fixed height
-        self.row2_container.pack(fill="x", padx=20, pady=10)  
+        self.row2_container.pack(fill="x", padx=20//SCALE, pady=10//SCALE)  
         self.row2_container.pack_propagate(False)  # Prevent expansion
 
         # Left Box (Main Image Display)
         self.left_box = Label(self.row2_container, bg="white", highlightthickness=1)
-        self.left_box.pack(side="left", padx=10, pady=10, expand=True)
+        self.left_box.pack(side="left", padx=10//SCALE, pady=10//SCALE, expand=True)
 
         # Right Box (Secondary Display)
         self.right_box = Label(self.row2_container, bg="white", highlightthickness=1)
-        self.right_box.pack(side="left", padx=10, pady=10, expand=True)
+        self.right_box.pack(side="left", padx=10//SCALE, pady=10//SCALE, expand=True)
 
         ######################################################################################################################
         ##### ROW 3: Carousel #####
 
-        self.row3_container = Frame(self, bg="white", height=216)  # Ensure height is set
-        self.row3_container.pack(side="bottom", fill="x", padx=50, pady=0)  # Keep it always visible
+        self.row3_container = Frame(self, bg="white", height=216//SCALE)  # Ensure height is set
+        self.row3_container.pack(side="bottom", fill="x", padx=50//SCALE, pady=0)  # Keep it always visible
         self.row3_container.pack_propagate(False)  # Prevent resizing issues
 
         # Left Arrow
-        diameter = 112
+        diameter = 112//SCALE
         self.left_button = IconButton(
             self.row3_container,
             command=self.prev_image,
@@ -153,7 +153,7 @@ class DataCreationInterface(Interface):
             width=diameter,
             height=diameter
         )
-        self.left_button.pack(side="left", padx=5, pady=5)
+        self.left_button.pack(side="left", padx=5//SCALE, pady=5//SCALE)
 
         # Carousel (Fixing width to prevent overflow)
         self.carousel = Carousel(self.row3_container, ds=self.dataset)
@@ -200,6 +200,7 @@ class DataCreationInterface(Interface):
         imgtk = ImageTk.PhotoImage(img)
         self.left_box.imgtk = imgtk
         self.left_box.configure(image=imgtk)
+
         
         # Update small display (Right Box)
         self.funcdisplay.M.args = self.dataset[self.idx][2]

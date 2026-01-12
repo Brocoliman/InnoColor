@@ -3,11 +3,11 @@ from PIL import Image
 import torch
 
 class Process:
-    def __init__(self, M, S, H, modelonly=False, topil=True, use_opencv=True):
+    def __init__(self, M, S, H, modelonly=False, topil=True, optimize=True):
         self.M, self.S, self.H = M, S, H
         self.modelonly = modelonly
         self.topil = topil
-        self.use_opencv = use_opencv  # Option to use OpenCV instead of PIL
+        self.optimize = optimize
 
     def __call__(self, img):
         return self.forward(img)
@@ -25,11 +25,11 @@ class Process:
             img = self.M(img)
         else:
             img = self.H(self.S(self.M(img)), img)
-        #t_model = time.time()
 
         # Remove batch dimension
         img = img.squeeze(0)
         img = (img * 255).clamp(0, 255)
+
 
         if self.topil:
             
@@ -38,7 +38,8 @@ class Process:
             #t_denorm = time.time()
 
             # Convert (C, H, W) → (H, W, C)
-            img = img.permute(1, 2, 0).contiguous().to("cpu", non_blocking=True)  # Ensures memory contiguity before NumPy conversion
+            
+            img = img.permute(1, 2, 0).contiguous().to("cpu", non_blocking=self.optimize)  # Ensures memory contiguity before NumPy conversion
             #t_np = time.time()
 
             # Convert to PIL Image
