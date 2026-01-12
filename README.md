@@ -51,9 +51,9 @@ pip install -r requirements.txt
 - `ds2.pth`
 - `ds3.pth`
 
-## Run
-1. Change `FOLDER` in `settings.py` to the name of this project location
-2. Run 
+5. Change `FOLDER` in `settings.py` to the name of this project location
+
+## Run 
 ```bash
 python main.py
 ```
