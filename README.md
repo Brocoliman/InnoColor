@@ -16,6 +16,8 @@ innocolor/
 |── model/
 |── checkpoint/
 |── cvdsim/
+|── sam2/
+|── sam2_configs/
 |
 │── requirements.txt
 │── README.md
