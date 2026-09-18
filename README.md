@@ -1,4 +1,4 @@
-# InnoColor
+# InnoColor Edge: A Real-Time Wearable System with Distilled Vision Transformer Guided Recoloring for Color Vision Deficiency
 
 InnoColor deployment for Ubuntu. PyTorch and TKinter.
 If you want the stable production version, please move to the `release/windows` branch.
