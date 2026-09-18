@@ -1,4 +1,4 @@
-# InnoColor
+# InnoColor Edge: A Real-Time Wearable System with Distilled Vision Transformer Guided Recoloring for Color Vision Deficiency
 
 InnoColor deployment for Windows. PyTorch and TKinter.
 
