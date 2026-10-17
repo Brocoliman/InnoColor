@@ -4,7 +4,7 @@ An on-device system that recolors a live camera feed for viewers with color
 vision deficiency (CVD), with a Tkinter interface for switching between model
 versions, simulating CVD types, and building/editing datasets.
 
-Status: preprint in preparation.
+Status: preprint in preparation, see [paper](paper/innocolor-edge.pdf).
 
 ## Version lineage
 
@@ -15,7 +15,7 @@ at runtime from the toolbar.
 |---|---|---|---|
 | DaltNet | `Dalt-NET` | Earliest architecture; multi-mapping 3D LUT method | [IEEE ICMI, Wang, 2024](https://www.researchgate.net/publication/382209331_Creation_of_DALT-NET_Deep_Learning_3D_Lookup_Table_Generation_Approach_to_Daltonization_for_Dichromatic_Vision) |
 | InnoColor (original) | `InnoColor` | Second architecture; salient-attention driven | [IEEE ICMI, Wang, 2025](https://www.researchgate.net/publication/395368307_Innocolor_a_Pioneering_Image_Recoloring_Framework_Driven_by_Salient_Attention_Networks) |
-| InnoColor Edge | `Distillation` | **Current architecture;** Dense Distillation Perceptual Algorithm (DDPA): a ViT teacher distilled into a lookup-table student | Unpublished, see [paper](paper/innocolor-edge.pdf) |
+| InnoColor Edge | `Distillation` | **Current architecture;** Dense Distillation Perceptual Algorithm (DDPA): a ViT teacher distilled into a lookup-table student | See [paper](paper/innocolor-edge.pdf) |
 
 A `Hue Rotation` baseline ([Huang et al., 2008](https://www.researchgate.net/publication/29622829_Enhancing_Color_Representation_for_the_Color_Vision_Impaired))
 is also included for comparison.
