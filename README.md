@@ -4,6 +4,8 @@ An on-device system that recolors a live camera feed for viewers with color
 vision deficiency (CVD), with a Tkinter interface for switching between model
 versions, simulating CVD types, and building/editing datasets.
 
+Status: preprint in preparation.
+
 ## Version lineage
 
 The repository ships three generations of recoloring model. They are selectable
